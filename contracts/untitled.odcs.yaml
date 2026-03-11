@@ -1,0 +1,9 @@
+apiVersion: v3.0.2
+kind: DataContract
+id: d7751b8b-d5e4-45c5-ae4b-1222109271d3
+name: untitled
+version: 1
+status: draft
+description: {}
+tags:
+  - bulk-import
