@@ -1,0 +1,81 @@
+apiVersion: v3.0.0
+kind: DataContract
+id: a66520a2-4918-40a3-a539-ff9d01d3c07a
+name: product_catalog_v1
+version: 0.1.0
+status: draft
+description:
+  purpose: Use this
+schema:
+  - name: product
+    logicalType: object
+    properties:
+      - name: product_id
+        logicalType: string
+      - name: product_name
+        logicalType: string
+      - name: sku
+        logicalType: string
+      - name: category
+        logicalType: string
+      - name: unit_price
+        logicalType: number
+      - name: currency
+        logicalType: string
+      - name: weight_kg
+        logicalType: number
+      - name: is_active
+        logicalType: boolean
+      - name: created_at
+        logicalType: timestamp
+      - name: updated_at
+        logicalType: timestamp
+dataQuality:
+  - type: schema conformity
+    field: product
+    dimension: conformity
+    description: All records in product must conform to the defined schema structure
+  - type: validity
+    field: product.product_id
+    dimension: validity
+    description: product_id must be a non-empty string
+  - type: referential integrity
+    field: product.product_id
+    dimension: integrity
+    description: product_id must reference a valid parent record
+  - type: validity
+    field: product.product_name
+    dimension: validity
+    description: product_name must be a non-empty string
+  - type: validity
+    field: product.sku
+    dimension: validity
+    description: sku must be a non-empty string
+  - type: validity
+    field: product.category
+    dimension: validity
+    description: category must be a non-empty string
+  - type: validity
+    field: product.unit_price
+    dimension: validity
+    description: unit_price must be a valid numeric value
+  - type: validity
+    field: product.currency
+    dimension: validity
+    description: currency must be a non-empty string
+  - type: validity
+    field: product.weight_kg
+    dimension: validity
+    description: weight_kg must be a valid numeric value
+  - type: validity
+    field: product.is_active
+    dimension: validity
+    description: is_active must be true or false
+  - type: validity
+    field: product.created_at
+    dimension: validity
+    description: created_at must be a valid timestamp
+  - type: validity
+    field: product.updated_at
+    dimension: validity
+    description: updated_at must be a valid timestamp
