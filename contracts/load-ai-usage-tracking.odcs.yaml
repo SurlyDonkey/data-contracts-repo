@@ -1,0 +1,10 @@
+apiVersion: v3.0.2
+kind: DataContract
+id: c08396e0-b678-407c-8b9b-9fb7a95803fc
+name: Load AI Usage Tracking
+version: 1.0.0
+status: draft
+description:
+  purpose: Load daily AI tool usage and interaction metrics.
+tags:
+  - auto-generated
