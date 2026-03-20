@@ -1,0 +1,33 @@
+kind: DataProduct
+id: 167bfa47-428c-46c5-ba62-c4a92068655a
+name: Customer Overview for Personalized Banking
+version: 1.0.0
+status: draft
+owner: Customer Analytics
+description: Unified customer view integrating account holdings, transaction patterns, digital engagement, product
+  ownership, life events, and service interactions for personalized banking experiences.
+tags:
+  - catalog-import
+inputPorts:
+  - name: API
+    type: table
+    description: "Imported from catalog: API"
+    sourceSystem: Customer Overview for Personalized Banking
+outputPorts:
+  - name: API
+    type: table
+    description: "Imported from catalog: API"
+contractIds:
+  - 46ff76f2-f498-49d1-b11a-908777d5e22a
+customProperties:
+  - key: catalogCode
+    value: finSFA
+  - key: sourceName
+    value: Customer Overview for Personalized Banking
+  - key: sourceDescription
+    value: Unified customer view integrating account holdings, transaction patterns, digital engagement, product ownership,
+      life events, and service interactions for personalized banking experiences.
+  - key: catalogCompletion
+    value: 75%
+  - key: catalogStatus
+    value: 🟢 Live
