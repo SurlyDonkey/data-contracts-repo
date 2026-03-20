@@ -1,0 +1,30 @@
+kind: DataProduct
+id: 1e2d1dd6-385e-4011-a56f-b3dc8dc27d56
+name: Subscription P&R Analytics
+version: 1.0.0
+status: active
+owner: data.owner@demo.company
+description: Provide an analytics-ready, reusable view of subscription activity and recurring revenue to support
+  financial monitoring, commercial performance tracking, and retention analysis.
+tags:
+  - subscription
+  - analytics
+  - finance
+  - commercial
+  - recurring-revenue
+  - mrr
+  - arr
+  - churn
+inputPorts:
+  - name: data-process/Subscription_Analytics_DataProcess_Contract
+    type: table
+    schemaRef: 9c5b2c3e-7f3c-4d5b-b6f0-1a2a9c4e3d21
+    description: ""
+outputPorts:
+  - name: Subscription Analytics Analyst
+    type: table
+    schemaRef: 3d3f1c18-6ff0-4b60-9c9f-6f2b7b1d3f0a
+    description: ""
+contractIds:
+  - 9c5b2c3e-7f3c-4d5b-b6f0-1a2a9c4e3d21
+  - 3d3f1c18-6ff0-4b60-9c9f-6f2b7b1d3f0a
