@@ -1,0 +1,95 @@
+apiVersion: v3.0.2
+kind: DataContract
+id: a66e3f30-f0ba-45d3-9e68-335fb2c86348
+name: bank_transaction_analysis
+version: 1.0.0
+status: active
+domain: finance
+description:
+  purpose: Provides high-fidelity bank transaction data for cash flow analysis, income verification, and spending pattern
+    identification.
+  usage: Used by credit risk models, financial health dashboards, and automated income verification services.
+  limitations: Data is limited to accounts where user consent is active. Transactions may have a 24-48 hour propagation
+    delay depending on the source bank.
+tags:
+  - open-banking
+  - transactions
+  - income-verification
+  - financial-health
+schema:
+  - name: transaction_records
+    logicalType: object
+    physicalType: table
+    description: Standardized bank transaction records enriched with categorization and identity metadata.
+    properties:
+      - name: transaction_id
+        logicalType: string
+        description: Unique identifier for the transaction
+        required: true
+        primaryKey: true
+      - name: account_id
+        logicalType: string
+        description: Unique identifier for the bank account
+        required: true
+        classification: sensitive_pii
+      - name: customer_id
+        logicalType: string
+        description: Internal identifier for the bank customer
+        required: true
+        classification: pii
+      - name: transaction_date
+        logicalType: date
+        description: The date the transaction took place
+        required: true
+      - name: amount
+        logicalType: decimal
+        description: The transaction amount. Positive for credits, negative for debits.
+        required: true
+      - name: currency
+        logicalType: string
+        description: ISO 4217 currency code
+        required: true
+      - name: merchant_name
+        logicalType: string
+        description: The name of the merchant involved in the transaction
+      - name: category
+        logicalType: string
+        description: Financial category (e.g., Groceries, Rent, Salary)
+        required: true
+      - name: is_income
+        logicalType: boolean
+        description: Flag indicating if the transaction is identified as a source of income
+        required: true
+        classification: pii
+      - name: description_raw
+        logicalType: string
+        description: The raw transaction description from the bank statement
+        classification: pii
+dataQuality:
+  - type: not_null
+    field: transaction_id
+    description: Transaction ID must be present for every record
+    dimension: completeness
+  - type: unique
+    field: transaction_id
+    description: Transaction ID must be unique across the dataset
+    dimension: uniqueness
+  - type: format
+    field: currency
+    description: Currency must be a valid 3-character ISO code
+    dimension: validity
+  - type: range
+    field: transaction_date
+    description: Transaction date cannot be in the future
+    dimension: validity
+  - type: custom
+    field: amount
+    description: Amount must not be zero
+    dimension: consistency
+team:
+  - name: Open Banking Team
+    role: Owner
+    email: open-banking-team@example.com
+  - name: Amir Hamza
+    role: Data Engineer
+    email: amir.hamza@actian.com
