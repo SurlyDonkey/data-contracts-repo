@@ -1,0 +1,75 @@
+kind: DataProduct
+id: 29b54fff-c2f4-4b01-a8cb-18f82a01e0e5
+name: Demo 360
+version: 1.0.0
+status: draft
+domain: Healthcare & Sales
+description: To provide a unified 360-degree view of both clinical patient history and commercial customer interactions.
+  This product bridges the gap between healthcare delivery (clinical encounters, medications) and commercial operations
+  (sales metrics, billing, and lifetime value) to enable holistic population health and customer relationship
+  management.
+tags:
+  - 360-view
+  - patient-data
+  - customer-success
+  - hipaa-compliant
+  - sales-analytics
+  - clinical-history
+inputPorts:
+  - name: patient_demographics
+    type: table
+    format: parquet
+    schemaRef: patient_demographics
+    description: Core demographic information for the patient. Contains sensitive PII/PHI data.
+    sourceSystem: Patient 360 Product - wood
+  - name: clinical_encounters
+    type: table
+    format: parquet
+    schemaRef: clinical_encounters
+    description: Summary of clinical encounters and visits for the patient.
+    sourceSystem: Patient 360 Product - wood
+  - name: medication_history
+    type: table
+    format: parquet
+    schemaRef: medication_history
+    description: Current medication list and prescription history.
+    sourceSystem: Patient 360 Product - wood
+  - name: customers cwood demo
+    type: table
+    format: table
+    schemaRef: customers cwood demo
+    description: Schema object from customers cwood demo
+    sourceSystem: customers cwood demo
+  - name: customer_profile
+    type: table
+    format: parquet
+    schemaRef: customer_profile
+    description: Core profile information for customers including identity and contact details.
+    sourceSystem: "Customer 360 "
+  - name: customer_addresses
+    type: table
+    format: parquet
+    schemaRef: customer_addresses
+    description: Detailed address information for shipping and billing.
+    sourceSystem: "Customer 360 "
+  - name: customer_metrics
+    type: table
+    format: parquet
+    schemaRef: customer_metrics
+    description: Summary of customer purchasing behavior and lifetime value.
+    sourceSystem: "Customer 360 "
+outputPorts:
+  - name: patient_360_analytical_view
+    type: table
+    format: parquet
+    description: A unified, high-performance analytical table containing patient demographics, clinical history, and
+      medication records. Optimized for clinical dashboarding and population health analytics.
+  - name: customer_360_gold_records
+    type: table
+    format: iceberg
+    description: A curated dataset of customer profiles, including contact information, addresses, and calculated metrics
+      like lifetime value and churn risk. Suitable for CRM integration and sales reporting.
+contractIds:
+  - 841b31bb-0d99-40ee-8e62-b6efa6d35227
+  - 031890b7-9483-4f17-8479-ff98820a4500
+  - cb5f3182-87f3-4eb9-8eec-a0316c171092
