@@ -1,0 +1,156 @@
+apiVersion: v3.0.2
+kind: DataContract
+id: 80e9a6e4-4dee-48ce-b6ac-cf8cf7aa290a
+name: employees
+version: 1.1.0
+status: active
+domain: Customer
+description:
+  purpose: "Imported from catalog: databricks-demo/zeenea_db/demo_db/employees"
+tags:
+  - catalog-import
+  - demo
+  - cwood
+  - test
+schema:
+  - name: employees
+    logicalType: object
+    physicalType: table
+    properties:
+      - name: employee_id
+        logicalType: string
+      - name: commission_rate
+        logicalType: string
+      - name: first_name
+        logicalType: string
+        classification: pii
+      - name: is_active
+        logicalType: string
+      - name: phone
+        logicalType: string
+        classification: pii
+      - name: job_title
+        logicalType: string
+      - name: manager_id
+        logicalType: string
+      - name: salary
+        logicalType: string
+        classification: pii
+      - name: region
+        logicalType: string
+      - name: hire_date
+        logicalType: string
+      - name: department
+        logicalType: string
+      - name: last_name
+        logicalType: string
+        classification: pii
+      - name: email
+        logicalType: string
+        classification: pii
+      - name: created_at
+        logicalType: string
+servers:
+  - name: ""
+    environment: production
+dataQuality:
+  - type: schema conformity
+    field: employees
+    description: All records in employees must conform to the defined schema structure
+    dimension: conformity
+  - type: validity
+    field: employees.employee_id
+    description: employee_id must be a non-empty string
+    dimension: validity
+  - type: referential integrity
+    field: employees.employee_id
+    description: employee_id must reference a valid parent record
+    dimension: integrity
+  - type: validity
+    field: employees.commission_rate
+    description: commission_rate must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.first_name
+    description: first_name must be a non-empty string
+    dimension: validity
+  - type: conformity
+    field: employees.first_name
+    description: first_name is classified as pii and must comply with data handling policies
+    dimension: conformity
+  - type: validity
+    field: employees.is_active
+    description: is_active must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.phone
+    description: phone must be a non-empty string
+    dimension: validity
+  - type: conformity
+    field: employees.phone
+    description: phone is classified as pii and must comply with data handling policies
+    dimension: conformity
+  - type: validity
+    field: employees.job_title
+    description: job_title must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.manager_id
+    description: manager_id must be a non-empty string
+    dimension: validity
+  - type: referential integrity
+    field: employees.manager_id
+    description: manager_id must reference a valid parent record
+    dimension: integrity
+  - type: validity
+    field: employees.salary
+    description: salary must be a non-empty string
+    dimension: validity
+  - type: conformity
+    field: employees.salary
+    description: salary is classified as pii and must comply with data handling policies
+    dimension: conformity
+  - type: validity
+    field: employees.region
+    description: region must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.hire_date
+    description: hire_date must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.department
+    description: department must be a non-empty string
+    dimension: validity
+  - type: validity
+    field: employees.last_name
+    description: last_name must be a non-empty string
+    dimension: validity
+  - type: conformity
+    field: employees.last_name
+    description: last_name is classified as pii and must comply with data handling policies
+    dimension: conformity
+  - type: validity
+    field: employees.email
+    description: email must be a non-empty string
+    dimension: validity
+  - type: conformity
+    field: employees.email
+    description: email is classified as pii and must comply with data handling policies
+    dimension: conformity
+  - type: validity
+    field: employees.created_at
+    description: created_at must be a non-empty string
+    dimension: validity
+team:
+  - name: Amir Amir Hamza
+    role: curator
+  - name: David Martin
+    role: curator
+customProperties:
+  - key: catalogCode
+    value: default
+  - key: sourceName
+    value: employees
+  - key: catalogCompletion
+    value: 60%
