@@ -1,0 +1,48 @@
+kind: DataProduct
+id: 3386c511-f89f-41d7-8293-e580b6643023
+name: Marketing 360 Demo DP
+version: 3.0.0
+status: active
+domain: Marketing
+owner: Charlie Wood
+description: To provide a unified, 360-degree view of the marketing funnel by consolidating Marketing Qualified Leads
+  (MQLs), general leads, and contact interactions. This enables tracking conversion rates, measuring campaign ROI, and
+  optimizing lead nurturing workflows.
+tags:
+  - marketing-360
+  - mql
+  - lead-scoring
+  - attribution-modeling
+  - customer-journey
+  - pii
+inputPorts:
+  - name: leads
+    type: table
+    format: table
+    schemaRef: leads
+    description: Consolidated record of potential customers who have entered the marketing funnel.
+    sourceSystem: Marketing 360 wood
+  - name: marketing_qualified_leads
+    type: table
+    format: table
+    schemaRef: marketing_qualified_leads
+    description: Records of leads that have been qualified by marketing based on specific engagement criteria.
+    sourceSystem: Marketing 360 wood
+  - name: contact_interactions
+    type: table
+    format: table
+    schemaRef: contact_interactions
+    description: Granular log of all interactions between a lead and marketing assets.
+    sourceSystem: Marketing 360 wood
+outputPorts:
+  - name: marketing_funnel_analytics_sql
+    type: table
+    format: Redshift Spectrum / External Table
+    description: A high-performance SQL interface for marketing analysts to perform complex joins between leads, MQLs, and
+      interactions. Optimized for BI tools and ad-hoc discovery.
+  - name: Ai Anayst
+    type: stream
+    format: Link
+    description: https://app.wobby.ai/explorer/task_cjsxs7y0i
+contractIds:
+  - 451bb962-ef12-48ad-9d84-1e31a874c1e3
