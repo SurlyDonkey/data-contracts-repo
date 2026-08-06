@@ -1,0 +1,21 @@
+apiVersion: v3.0.2
+kind: DataContract
+id: 70204c64-01ab-4e69-9e71-b9beae830777
+name: API
+version: 1.0.0
+status: draft
+domain: Banking
+description:
+  purpose: "Imported from catalog: API"
+tags:
+  - catalog-import
+  - auto-generated
+schema:
+  - name: API
+    logicalType: object
+    physicalType: table
+    description: "Imported from catalog: API"
+    properties:
+      - name: API
+        logicalType: string
+        description: Placeholder — no fields found in catalog
