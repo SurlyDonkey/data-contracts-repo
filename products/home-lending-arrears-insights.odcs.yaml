@@ -1,0 +1,58 @@
+kind: DataProduct
+id: ff0de9fc-1291-44b0-ba5c-0db388582f40
+name: Home Lending Arrears Insights
+version: 2.0.0
+status: active
+domain: home-lending
+owner: priya.raman@cba.example
+description: Arrears and hardship insight product combining the home lending loan book with retail consent signals for
+  customer outreach.
+tags:
+  - home-lending
+  - arrears
+  - analytics
+inputPorts:
+  - name: loan_book_snapshot
+    type: table
+    format: delta
+    description: Daily loan book snapshot
+    sourceSystem: CommSee
+  - name: consent_feed
+    type: table
+    format: delta
+    description: Retail consent flags
+    sourceSystem: CRM
+outputPorts:
+  - sla:
+      - value: daily
+        property: frequency
+    name: arrears_customer_view
+    type: table
+    format: delta
+    description: Customer-level arrears view with outreach eligibility
+    fieldMappings:
+      - target: loan_account_id
+        sources:
+          - loan_account.loan_account_id
+      - target: arrears_bucket
+        sources:
+          - loan_account.arrears_bucket
+      - target: outreach_eligible
+        sources:
+          - customer_consent.marketing_consent_flag
+          - loan_account.arrears_bucket
+        transform: consent AND arrears >= 30 days
+contractIds:
+  - 143d51c8-dca3-4ae2-b55c-60b283f738fd
+  - 82415795-3c17-4f89-ad67-b14a55cb0334
+customProperties:
+  - key: criticality
+    value: Tier 1 - Critical
+  - key: data_owner_email
+    value: priya.raman@cba.example
+  - key: customer_facing
+    value: "true"
+  - key: retention_years
+    value: "7"
+  - key: loan_system_of_record
+    value: CommSee
