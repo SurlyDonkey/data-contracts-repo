@@ -1,0 +1,58 @@
+kind: DataProduct
+id: f15a7528-e692-416f-ad7a-1e4ebe91af7e
+name: APRA Regulatory Reporting Pack
+version: 1.2.0
+status: active
+domain: risk-and-compliance
+owner: angela.cho@cba.example
+description: Curated regulatory reporting product delivering APRA ARS 220 credit quality exposures with full lineage and
+  reconciliation evidence.
+tags:
+  - risk
+  - apra
+  - regulatory
+  - certified
+inputPorts:
+  - name: capital_exposure_feed
+    type: table
+    format: delta
+    description: Risk capital exposure positions
+    sourceSystem: Risk Engine
+outputPorts:
+  - sla:
+      - value: monthly
+        property: frequency
+      - unit: "%"
+        value: "99.95"
+        property: availability
+    name: ars220_submission_extract
+    type: file
+    format: parquet
+    description: ARS 220 submission extract
+    fieldMappings:
+      - target: exposure_id
+        sources:
+          - capital_exposure.exposure_id
+      - target: asset_class
+        sources:
+          - capital_exposure.asset_class
+      - target: rwa_aud
+        sources:
+          - capital_exposure.exposure_at_default_aud
+          - capital_exposure.risk_weight_pct
+        transform: EAD * risk weight / 100
+contractIds:
+  - c1194a1a-077c-4e12-9e9a-5758853ada9a
+customProperties:
+  - key: criticality
+    value: Tier 1 - Critical
+  - key: data_owner_email
+    value: angela.cho@cba.example
+  - key: customer_facing
+    value: "false"
+  - key: retention_years
+    value: "7"
+  - key: apra_cps234_scope
+    value: "true"
+  - key: reg_report
+    value: APRA ARS 220
