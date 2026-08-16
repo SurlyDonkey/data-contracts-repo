@@ -1,7 +1,7 @@
 kind: DataProduct
 id: ff0de9fc-1291-44b0-ba5c-0db388582f40
 name: Home Lending Arrears Insights
-version: 2.0.0
+version: 2.1.1
 status: active
 domain: home-lending
 owner: priya.raman@cba.example
@@ -45,14 +45,3 @@ outputPorts:
 contractIds:
   - 143d51c8-dca3-4ae2-b55c-60b283f738fd
   - 82415795-3c17-4f89-ad67-b14a55cb0334
-customProperties:
-  - key: criticality
-    value: Tier 1 - Critical
-  - key: data_owner_email
-    value: priya.raman@cba.example
-  - key: customer_facing
-    value: "true"
-  - key: retention_years
-    value: "7"
-  - key: loan_system_of_record
-    value: CommSee
